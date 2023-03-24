@@ -1,0 +1,212 @@
+@font-face {
+    font-family: "FOT-RodinBokutoh";
+    src: url(fonts/FOT-RodinBokutoh\ Pro\ EB.otf);
+}
+
+@font-face {
+    font-family: "FOT-Sekurat Pro";
+    src: url(fonts/FOT-Seurat\ Pro\ B.otf);
+}
+
+@keyframes blob {
+    0% {transform:rotate(-1deg);
+    }
+    50% {transform:rotate(1deg);
+    }
+    100% {transform:rotate(-1deg);
+    }
+
+}
+
+@keyframes blob-intense {
+    0% {transform:rotate(-2deg);
+    }
+    50% {transform:rotate(2deg);
+    }
+    100% {transform:rotate(-2deg);
+    }
+}
+
+@keyframes blob-very-intense {
+    0% {transform:rotate(-3.5deg);
+    }
+    50% {transform:rotate(3.5deg);
+    }
+    100% {transform:rotate(-3.5deg);
+    }
+}
+
+@keyframes bounce {
+    0% {transform: matrix(0.98,-0.17,0.17,0.98,0,35);}
+    50% {transform: matrix(0.98,-0.17,0.17,0.98,0,40);}
+    100% {transform: matrix(0.98,-0.17,0.17,0.98,0,35);}
+}
+
+@keyframes bounce-norotate {
+    0% {transform: matrix(3,0,0,3,0,35);}
+    50% {transform: matrix(3,0,0,3,0,40);}
+    100% {transform: matrix(3,0,0,3,0,35);}
+}
+
+:root {
+    --dialog-name: hsl(229, 100%, 70%);
+    ---dialog-name-inside: rgb(112, 94, 43);
+    --dialog-name-inside: rgb(255, 255, 255);
+    --dialog-text: rgb(127,115,89);
+    --dialog-background: rgb(252,250,227);
+}
+
+body {
+    background-color: hsl(0, 0%, 0%);
+}
+
+h1 {
+    color:rgb(255, 105, 185);
+    font-size: 2.5rem;
+    white-space: nowrap;
+    display:inline;
+}
+h2 {
+    color:rgb(121, 190, 107);
+    font-size: 2.5rem;
+    white-space: nowrap;
+    display:inline;
+}
+
+.material-symbols-rounded {
+    position: sticky;
+    z-index: 5;
+    font-size: 68px;
+    left: 45%;
+    color:gold;
+    animation-name: bounce-norotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+    top: 83%;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.dialog {
+    display: block;
+    overflow:hidden;
+    width: 1050px;
+    aspect-ratio: 2.8/1;
+}
+
+.blobs {
+    filter: url("#blend")
+}
+
+.blob {
+    z-index: 1;
+    position: absolute;
+    display: block;
+    background-color: var(--dialog-background);
+    animation-name: blob;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.top-blob {
+    width: 90%;
+    left: 2%;
+    height: 270px;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-top-left-radius: 60%;
+    border-top-right-radius: 60%;
+    animation-duration: 7s;
+}
+
+.bottom-blob {
+    top: 125px;
+    left: 5%;
+    width: 85%;
+    height: 175px;
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+    border-top-left-radius: 55%;
+    border-top-right-radius: 55%;
+    animation-duration: 5s;
+}
+
+.dialog > .name {
+    transform: rotate(-10deg);
+    font-family: 'FOT-Sekurat Pro';
+    background-color: var(--dialog-name);
+    color: var(--dialog-name-inside);
+    font-size: 2.2rem;
+    text-align: center;
+    width:fit-content;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    border-radius: 10rem;
+    position: relative;
+    z-index: 2;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.dialog > .content {
+    left: 120px;
+    top: 8%;
+    width: 790px;
+    font-family: 'FOT-RodinBokutoh';
+    color: var(--dialog-text);
+    font-size: 2.5rem;
+    z-index: 2;
+    position:relative;
+}
+
+.shake {
+    animation-name: blob;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1s;
+    display: inline-block;
+}
+
+.shake-intense {
+    animation-name: blob-intense;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.75s;
+    display: inline-block;
+}
+
+.shake-very-intense {
+    animation-name: blob-very-intense;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.5s;
+    display: inline-block;
+}
+
+.letter-bottom-origin {
+    transform-origin: bottom;
+}
+
+.shout {
+    display: inline-block;
+    font-size: 3.5rem;
+}
+
+.pink {
+    display: inline-block;
+    color:rgb(255, 105, 185);
+}
+
+.green {
+    display: inline-block;
+    color:rgb(121, 190, 107);
+}
