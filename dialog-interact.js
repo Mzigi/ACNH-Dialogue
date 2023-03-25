@@ -1,6 +1,20 @@
 let dialog = document.querySelector(".dialog")
 let nextButton = document.getElementById("next-button")
 
+function setDialogToVillager(USenName) {
+    let villagerId = null
+    for (let i = 0; i < villagers.length; i++) {
+        if (villagers[i].name["name-USen"] == USenName) {
+            villagerId = i
+        }
+    }
+    if (villagerId) {
+        setDialog(villagers[villagerId])
+    } else {
+        console.log(`No villager with the name ${USenName} exists`)
+    }
+}
+
 function setDialog(jsontable) {
     document.querySelector(".name").innerHTML = jsontable.name["name-USen"]
     document.documentElement.style.setProperty("--dialog-name",jsontable["bubble-color"])
@@ -14,7 +28,6 @@ function setDialog(jsontable) {
             setTimeout(function() {
                 document.querySelector(".content").innerHTML = fullMessage.substring(0,i)
             },totalTime)
-            console.log(fullMessage.substring(i,i + 1))
             if (fullMessage.substring(i - 1,i) == "." || fullMessage.substring(i - 1,i) == "?" || fullMessage.substring(i - 1,i) == ",") {
                 totalTime += 400
             } else {
