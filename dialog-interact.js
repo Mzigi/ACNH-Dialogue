@@ -1,68 +1,42 @@
-let messages = [
-    {
-        "name":"Tangy", 
-        "namecolor": "hsl(40, 100%, 50%)", 
-        "nameisdark": true,
-        "content": 'Did you just.. Give me an <div class="green shake">ORANGE?</div>'
-    },
-    {
-        "name":"Rosie", 
-        "namecolor": "hotpink", 
-        "nameisdark": false,
-        "content": 'The most popular flower in the world is the rose! No debating!'
-    },
-    {
-        "name":"Raymond", 
-        "namecolor": "lightblue", 
-        "nameisdark": true,
-        "content": "Guten Tag! That's french for Good Tag!"
-    },
-    {
-        "name":"Marshal", 
-        "namecolor": "white", 
-        "nameisdark": true,
-        "content": "Ahem... I'm a boy..."
-    },
-    {
-        "name":"Marina", 
-        "namecolor": "hotpink", 
-        "nameisdark": false,
-        "content": "Blurp, I'm the only <div class='pink'>pink</div> octopus, but there's only three of us so it makes sense..."
-    },
-    {
-        "name":"Zucker", 
-        "namecolor": "burlywood", 
-        "nameisdark": false,
-        "content": "I just realized... I'm a <div class='shout'>SNACK!</div> Should I eat myself?"
-    },
-    {
-        "name":"Barold", 
-        "namecolor": "grey", 
-        "nameisdark": false,
-        "content": "Oh, you're the resident representative? I moved to here from <div class='pink'>aple</div>!"
-    },
-    {
-        "name":"Sherb", 
-        "namecolor": "cyan", 
-        "nameisdark": true,
-        "content": "I'm hungry... I need <div class='shout'>SALT!</div>"
-    },
-]
+let dialog = document.querySelector(".dialog")
+let nextButton = document.getElementById("next-button")
 
 function setDialog(jsontable) {
-    document.querySelector(".name").innerHTML = jsontable.name
-    document.documentElement.style.setProperty("--dialog-name",jsontable.namecolor)
-    if (jsontable.nameisdark) {
-        document.documentElement.style.setProperty("--dialog-name-inside","rgb(112, 94, 43)")
-    } else {
-        document.documentElement.style.setProperty("--dialog-name-inside","rgb(255, 255, 255)")
-    }
-    document.querySelector(".content").innerHTML = jsontable.content
+    document.querySelector(".name").innerHTML = jsontable.name["name-USen"]
+    document.documentElement.style.setProperty("--dialog-name",jsontable["bubble-color"])
+    document.documentElement.style.setProperty("--dialog-name-inside",jsontable["text-color"])
+    document.querySelector(".content").innerHTML = ""
+
+    setTimeout(function() {
+        let totalTime = 0
+        let fullMessage = jsontable.saying
+        for (let i = 0; i < fullMessage.length; i++) {
+            setTimeout(function() {
+                document.querySelector(".content").innerHTML = fullMessage.substring(0,i)
+            },totalTime)
+            console.log(fullMessage.substring(i,i + 1))
+            if (fullMessage.substring(i - 1,i) == "." || fullMessage.substring(i - 1,i) == "?" || fullMessage.substring(i - 1,i) == ",") {
+                totalTime += 400
+            } else {
+                totalTime += 25
+            }
+        }
+        setTimeout(function() {
+            nextButton.classList.remove("inactive")
+        },totalTime)
+    },320)
 }
 
-setDialog(messages[messages.length - 1])
+setDialog(villagers[villagers.length - 1])
 
-document.getElementById("next-button").addEventListener("mousedown", function() {
-    let randomMessageId = Math.floor(Math.random() * messages.length)
-    setDialog(messages[randomMessageId])
+nextButton.addEventListener("mousedown", function(e) {
+    if (e.button == 0 && !dialog.classList.contains("inactive") && !nextButton.classList.contains("inactive")) {
+        let randomMessageId = Math.floor(Math.random() * villagers.length)
+        dialog.classList.add("inactive")
+        nextButton.classList.add("inactive")
+        setTimeout(function() {
+            setDialog(villagers[randomMessageId])
+            dialog.classList.remove("inactive")
+        },300)
+    }
 })
