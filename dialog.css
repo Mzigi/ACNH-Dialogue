@@ -132,7 +132,7 @@ h2 {
     border-bottom-right-radius: 100%;
     border-top-left-radius: 70%;
     border-top-right-radius: 70%;
-    animation-duration: 7s;
+    animation-duration: 6s;
 }
 
 .bottom-blob {
@@ -144,7 +144,7 @@ h2 {
     border-bottom-right-radius: 50%;
     border-top-left-radius: 85%;
     border-top-right-radius: 85%;
-    animation-duration: 5s;
+    animation-duration: 4s;
 }
 
 .dialog > .name {
