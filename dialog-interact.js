@@ -27,7 +27,7 @@ function setDialog(jsontable) {
     },320)
 }
 
-setDialog(villagers[villagers.length - 1])
+setDialog(villagers[Math.floor(Math.random() * villagers.length)])
 
 nextButton.addEventListener("mousedown", function(e) {
     if (e.button == 0 && !dialog.classList.contains("inactive") && !nextButton.classList.contains("inactive")) {
