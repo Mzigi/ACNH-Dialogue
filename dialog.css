@@ -38,7 +38,7 @@
 
 @keyframes bounce {
     0% {transform: matrix(0.98,-0.17,0.17,0.98,0,40);}
-    50% {transform: matrix(0.98,-0.17,0.17,0.98,0,45);}
+    50% {transform: matrix(0.98,-0.17,0.17,0.98,0,43);}
     100% {transform: matrix(0.98,-0.17,0.17,0.98,0,40);}
 }
 
@@ -152,7 +152,7 @@ h2 {
     font-family: 'FOT-Sekurat Pro';
     background-color: var(--dialog-name);
     color: var(--dialog-name-inside);
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-align: center;
     width:fit-content;
     padding-left: 3rem;
@@ -161,9 +161,10 @@ h2 {
     position: relative;
     z-index: 2;
     animation-name: bounce;
-    animation-duration: 2s;
+    animation-duration: 1.25s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
+    margin-left: 36px;
 }
 
 .dialog > .content {
